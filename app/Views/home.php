@@ -18,13 +18,13 @@
             5px -5px 0 white,
             -5px 5px 0 white,
             5px 5px 0 white;
-        font-size: 3.5rem !important;
+        font-size: 3rem !important;
         line-height: 1.2;
     }
 
     @media (max-width: 768px) {
         .hero-title {
-            font-size: 2rem !important;
+            font-size: 1.8rem !important;
             text-shadow:
                 -2px -2px 0 white,
                 2px -2px 0 white,
