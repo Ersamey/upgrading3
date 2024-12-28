@@ -8,5 +8,5 @@ class pesanModel extends Model
 {
     protected $table = 'pesan';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id_anak', 'pesan'];
+    protected $allowedFields = ['id_anak', 'pesan', 'id_pengirim'];
 }

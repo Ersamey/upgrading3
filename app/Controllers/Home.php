@@ -13,7 +13,6 @@ class Home extends BaseController
     protected $pesan;
     protected $balasan;
 
-    // buat constructor untuk memanggil model anakBemModel
     public function __construct()
     {
         $this->anakBem = new anakBemModel();
@@ -26,14 +25,16 @@ class Home extends BaseController
         return view('home');
     }
 
+    public function admin()
+    {
+        return view('admin');
+    }
+
     public function pesan()
     {
-        // Ambil ID anak dari sesi, jika ada
         $id = session()->get('id_anak');
-
-        // Pastikan ID anak ada dalam sesi
         if (!$id) {
-            return redirect()->to('/'); // Redirect jika ID tidak ditemukan
+            return redirect()->to('/');
         }
 
         $anakbem = $this->anakBem->find($id);
@@ -53,7 +54,7 @@ class Home extends BaseController
     {
         $id_anak = session()->get('id_anak');
         if (!$id_anak) {
-            return redirect()->to('/'); // Redirect jika ID tidak ditemukan
+            return redirect()->to('/');
         }
 
         $data = [
@@ -66,19 +67,14 @@ class Home extends BaseController
 
     public function savebalas()
     {
-        // Ambil data dari form
-        $id_anak = session()->get('id_anak'); // Ambil ID anak dari sesi
+        $id_anak = session()->get('id_anak');
         $pengirim = $this->request->getPost('pengirim');
         $pesan = $this->request->getPost('pesan');
-
-        // Simpan data balasan
         $this->balasan->save([
             'id_anak' => $id_anak,
             'pengirim' => $pengirim,
             'pesan' => $pesan,
         ]);
-
-        // Redirect tanpa menampilkan ID anak di URL
         return redirect()->to('/pesan');
     }
 
@@ -89,10 +85,66 @@ class Home extends BaseController
         $anakbem = $this->anakBem->where('nim', $nim)->where('kode', $kode)->first();
 
         if ($anakbem) {
-            // Simpan ID anak ke sesi
             session()->set('id_anak', $anakbem['id']);
         }
 
-        return redirect()->to('/pesan'); // Redirect ke halaman pesan
+        return redirect()->to('/pesan');
+    }
+
+    public function adminmasuk()
+    {
+        $nim = $this->request->getPost('nim');
+        $kode = $this->request->getPost('password');
+        $anakbem = $this->anakBem->where('nim', $nim)->where('kode', $kode)->first();
+        // ganti sesuai id ny dellap dan frank
+        if ($anakbem['id'] == 3 || $anakbem['id'] == 4) {
+            return redirect()->to('/adm/kirim');
+        }
+        return redirect()->to('/admin');
+    }
+
+    public function kirim()
+    {
+        $anakbem = $this->anakBem->findAll();
+        $pengirim = $this->anakBem->where('id', session()->get('id_anak'))->first();
+        $data = [
+            'anakbem' => $anakbem,
+            'pengirim' => $pengirim
+        ];
+        return view('createPesan', $data);
+    }
+
+    public function savepesan()
+    {
+        $id_pengirim = $this->request->getPost('id_pengirim');
+        $id_anak = $this->request->getPost('id_anak');
+        $pesan = $this->request->getPost('pesan');
+
+        $this->pesan->save([
+            'id_anak' => $id_anak,
+            'pesan' => $pesan,
+            'id_pengirim' => $id_pengirim
+        ]);
+
+        return redirect()->to('/adm/kirim');
+    }
+    public function saveanak()
+    {
+        $nama_anak = $this->request->getPost('nama_anak');
+        $nim = $this->request->getPost('nim');
+        $kode = $this->request->getPost('kode');
+
+        $this->anakBem->save([
+            'nama_anak' => $nama_anak,
+            'nim' => $nim,
+            'kode' => $kode
+        ]);
+
+        return redirect()->to('/adm/kirim');
+    }
+
+    public function addPerson()
+    {
+        return view('add_person');
     }
 }

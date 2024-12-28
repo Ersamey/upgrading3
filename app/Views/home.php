@@ -143,7 +143,6 @@
         max-width: 350px;
     }
 
-    /* Media query untuk tampilan mobile */
     @media (max-width: 768px) {
         .about-header {
             max-width: 200px;
@@ -170,7 +169,6 @@
                                 overflow: visible;
                                 min-height: 450px;">
             <div class="row align-items-center">
-                <!-- Form Section -->
                 <!-- Form Section -->
                 <div class="col-md-6 mb-4 mb-md-0">
                     <div class="bg-transparent p-4 rounded-3">
