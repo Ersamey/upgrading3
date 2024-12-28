@@ -112,18 +112,24 @@
                         <h2 class="mb-4 wendy-one-regular text-start hero-title">
                             Sebelum Kirim Pesan
                         </h2>
-                        <form class="py-3">
+                        <form class="py-3" action="/masuk" method="post">
                             <div class="mb-4">
                                 <input type="text"
                                     class="form-control titan-font bg-white py-3"
                                     placeholder="Isi NIM mu disini"
-                                    style="height: 45px;">
+                                    style="height: 45px;"
+                                    id="nim"
+                                    name="nim"
+                                    required>
                             </div>
                             <div class="mb-4">
                                 <input type="password"
                                     class="form-control titan-font bg-white py-3"
                                     placeholder="Password disini"
-                                    style="height: 45px;">
+                                    style="height: 45px;"
+                                    id="password"
+                                    name="password"
+                                    required>
                             </div>
                             <button type="submit"
                                 class="btn w-100 titan-font d-flex align-items-center justify-content-center"
