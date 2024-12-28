@@ -141,7 +141,7 @@
                     <!-- Logo Kemakom -->
                     <img src="<?= base_url('assets/images/logo-kemakom.webp') ?>"
                         alt="Logo Kemakom"
-                        class="position-absolute logo-kemakom"
+                        class="position-absolute logo-kemakom d-none d-md-block"
                         style="width: 120px; top: 100px; left: 20px; z-index: 2;">
                     <!-- Kapal -->
                     <img src="<?= base_url('assets/images/kapal.webp') ?>"
