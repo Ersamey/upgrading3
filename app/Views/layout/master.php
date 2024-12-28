@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+        html {
+            scroll-behavior: auto !important;
+        }
+    </style>
+
 </head>
 
 <body class="font-sans">

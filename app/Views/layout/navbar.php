@@ -11,12 +11,13 @@
         flex: 1;
     }
 
+
     .nav-link {
         color: white;
         text-decoration: none;
         position: relative;
         padding-bottom: 5px;
-        transition: all 0.3s ease;
+        transition: transform 0.2s ease;
     }
 
     .nav-link::after {
@@ -27,7 +28,7 @@
         bottom: 0;
         left: 50%;
         background-color: white;
-        transition: all 0.3s ease;
+        transition: width 0.2s ease;
         transform: translateX(-50%);
     }
 
@@ -38,6 +39,13 @@
     .nav-link:hover {
         color: #ffffff;
         transform: translateY(-2px);
+    }
+
+    .nav-link,
+    .nav-link:visited,
+    .nav-link:active,
+    .nav-link:hover {
+        color: white !important;
     }
 
     .btn-start {
@@ -89,6 +97,7 @@
 
     /* Media query untuk mobile */
     @media (max-width: 768px) {
+
         .nav-container,
         .btn-container {
             display: none;
@@ -96,6 +105,10 @@
 
         .nav-link::after {
             display: none;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
         }
     }
 
@@ -148,19 +161,51 @@
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-menu a[href^="#"]');
 
         mobileMenuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close menu when clicking outside
+        // Fast sequential scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const startPosition = window.scrollY;
+                    const targetPosition = targetElement.offsetTop;
+                    const distance = targetPosition - startPosition;
+                    const duration = 20;
+                    const startTime = performance.now();
+
+                    function scrollStep(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        window.scrollTo(0, startPosition + (distance * progress));
+
+                        if (progress < 1) {
+                            requestAnimationFrame(scrollStep);
+                        }
+                    }
+
+                    requestAnimationFrame(scrollStep);
+
+                    // Tutup mobile menu
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
         document.addEventListener('click', function(e) {
             if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
         });
 
-        // Close menu on window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth >= 768) {
                 mobileMenu.classList.add('hidden');
