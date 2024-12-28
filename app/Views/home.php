@@ -86,6 +86,70 @@
             transform: rotate(0deg);
         }
     }
+
+    .feature-card {
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-wrapper {
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .img-wrapper img {
+        transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .img-wrapper img {
+        transform: scale(1.1);
+    }
+
+    .feature-title {
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .feature-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: rgba(68, 157, 255, 1);
+        transition: width 0.3s ease;
+    }
+
+    .feature-card:hover .feature-title::after {
+        width: 50px;
+    }
+
+    .feature-text {
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover .feature-text {
+        opacity: 1;
+    }
+
+    .about-header {
+        max-width: 350px;
+    }
+
+    /* Media query untuk tampilan mobile */
+    @media (max-width: 768px) {
+        .about-header {
+            max-width: 200px;
+            /* Ukuran lebih kecil untuk mobile */
+        }
+    }
 </style>
 
 <!-- Hero Section -->
@@ -159,7 +223,7 @@
 <!-- About Section -->
 <section id="about" class="py-5 text-white" style="background-color: #449DFF;">
     <div class="container-fluid px-4 mb-5">
-        <img src="<?= base_url('assets/images/header-about.webp') ?>" class="img-fluid" style="max-width: 350px;" alt="About Header">
+        <img src="<?= base_url('assets/images/header-about.webp') ?>" class="img-fluid about-header" alt="About Header">
     </div>
 
     <div class="container">
@@ -197,87 +261,103 @@
     </div>
 </section>
 
-<!-- Tambahkan di head -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-<style>
-    .feature-card {
-        transition: all 0.3s ease;
-        overflow: hidden;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .img-wrapper {
-        overflow: hidden;
-        border-radius: 8px;
-    }
-
-    .img-wrapper img {
-        transition: transform 0.5s ease;
-    }
-
-    .feature-card:hover .img-wrapper img {
-        transform: scale(1.1);
-    }
-
-    .feature-title {
-        position: relative;
-        padding-bottom: 10px;
-    }
-
-    .feature-title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: rgba(68, 157, 255, 1);
-        transition: width 0.3s ease;
-    }
-
-    .feature-card:hover .feature-title::after {
-        width: 50px;
-    }
-
-    .feature-text {
-        opacity: 0.9;
-        transition: opacity 0.3s ease;
-    }
-
-    .feature-card:hover .feature-text {
-        opacity: 1;
-    }
-</style>
-
 <!-- Contact Section -->
-<section id="contact" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-4">Contact</h2>
-        <div class="col-lg-6 mx-auto">
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" id="name" class="form-control">
+<section id="contact" class="py-5 position-relative">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('<?= base_url('assets/images/bg-contact.webp') ?>') no-repeat center center; background-size: cover; z-index: 1;"></div>
+
+    <!-- Content with z-index higher than background -->
+    <div class="position-relative" style="z-index: 2;">
+        <!-- Header Image -->
+        <div class="container-fluid px-4 mb-5">
+            <img src="<?= base_url('assets/images/contact-header.webp') ?>" class="img-fluid contact-header" alt="Contact Header">
+        </div>
+
+        <div class="container position-relative">
+            <div class="text-center py-5" style="background: url('<?= base_url('assets/images/bg-cp.webp') ?>') no-repeat center center; background-size: cover; border-radius: 20px;">
+                <h2 class="contact-title mb-4">You Can Contact</h2>
+                <div class="d-flex justify-content-center gap-4">
+                    <button class="btn px-4 py-2 contact-btn">Public Relation 1</button>
+                    <button class="btn px-4 py-2 contact-btn">Public Relation 2</button>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" rows="4" class="form-control"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">
-                    Send Message
-                </button>
-            </form>
+            </div>
         </div>
     </div>
 </section>
+
+<style>
+/* Header image responsive */
+.contact-header {
+    max-width: 350px;
+}
+
+@media (max-width: 768px) {
+    .contact-header {
+        max-width: 200px;
+    }
+}
+
+/* Contact title with stroke */
+.contact-title {
+    font-family: 'Titan One', cursive;
+    color: #449DFF;
+    font-size: 3rem;
+    text-shadow:
+        -3px -3px 0 white,
+        3px -3px 0 white,
+        -3px 3px 0 white,
+        3px 3px 0 white,
+        -4px -4px 0 white,
+        4px -4px 0 white,
+        -4px 4px 0 white,
+        4px 4px 0 white,
+        -5px -5px 0 white,
+        5px -5px 0 white,
+        -5px 5px 0 white,
+        5px 5px 0 white;
+    line-height: 1.2;
+}
+
+/* Contact buttons */
+.contact-btn {
+    background-color: #5B554E;
+    color: white;
+    font-family: 'Wendy One', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #4a4643;
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 1.8rem;
+        text-shadow:
+            -2px -2px 0 white,
+            2px -2px 0 white,
+            -2px 2px 0 white,
+            2px 2px 0 white,
+            -3px -3px 0 white,
+            3px -3px 0 white,
+            -3px 3px 0 white,
+            3px 3px 0 white,
+            -4px -4px 0 white,
+            4px -4px 0 white,
+            -4px 4px 0 white,
+            4px 4px 0 white;
+    }
+    
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-btn {
+        width: 80%;
+    }
+}
+</style>
 
 <?= $this->endSection() ?>
