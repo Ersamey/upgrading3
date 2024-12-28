@@ -12,10 +12,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Wendy+One&display=swap" rel="stylesheet">
 
     <style>
         html {
             scroll-behavior: auto !important;
+        }
+
+        .wendy-one-regular {
+            font-family: "Wendy One", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .titan-font {
+            font-family: 'Titan One', cursive;
         }
     </style>
 

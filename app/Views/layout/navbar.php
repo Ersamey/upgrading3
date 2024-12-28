@@ -1,8 +1,4 @@
 <style>
-    .titan-font {
-        font-family: 'Titan One', cursive;
-    }
-
     .nav-container {
         display: flex;
         align-items: center;
