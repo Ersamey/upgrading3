@@ -171,12 +171,14 @@
                                 min-height: 450px;">
             <div class="row align-items-center">
                 <!-- Form Section -->
+                <!-- Form Section -->
                 <div class="col-md-6 mb-4 mb-md-0">
                     <div class="bg-transparent p-4 rounded-3">
                         <h2 class="mb-4 wendy-one-regular text-start hero-title">
                             Sebelum Kirim Pesan
                         </h2>
                         <form class="py-3" action="/masuk" method="post">
+                            <?= csrf_field(); ?>
                             <div class="mb-4">
                                 <input type="text"
                                     class="form-control titan-font bg-white py-3"
@@ -203,6 +205,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="col-md-6" style="position: absolute; 
                            bottom: 0;
                            right: -12px;
@@ -291,60 +294,23 @@
 </section>
 
 <style>
-/* Header image responsive */
-.contact-header {
-    max-width: 350px;
-}
-
-@media (max-width: 768px) {
+    /* Header image responsive */
     .contact-header {
-        max-width: 200px;
+        max-width: 350px;
     }
-}
 
-/* Contact title with stroke */
-.contact-title {
-    font-family: 'Titan One', cursive;
-    color: #449DFF;
-    font-size: 3rem;
-    text-shadow:
-        -3px -3px 0 white,
-        3px -3px 0 white,
-        -3px 3px 0 white,
-        3px 3px 0 white,
-        -4px -4px 0 white,
-        4px -4px 0 white,
-        -4px 4px 0 white,
-        4px 4px 0 white,
-        -5px -5px 0 white,
-        5px -5px 0 white,
-        -5px 5px 0 white,
-        5px 5px 0 white;
-    line-height: 1.2;
-}
+    @media (max-width: 768px) {
+        .contact-header {
+            max-width: 200px;
+        }
+    }
 
-/* Contact buttons */
-.contact-btn {
-    background-color: #5B554E;
-    color: white;
-    font-family: 'Wendy One', sans-serif;
-    transition: all 0.3s ease;
-}
-
-.contact-btn:hover {
-    background-color: #4a4643;
-    color: white;
-    transform: translateY(-3px);
-}
-
-@media (max-width: 768px) {
+    /* Contact title with stroke */
     .contact-title {
-        font-size: 1.8rem;
+        font-family: 'Titan One', cursive;
+        color: #449DFF;
+        font-size: 3rem;
         text-shadow:
-            -2px -2px 0 white,
-            2px -2px 0 white,
-            -2px 2px 0 white,
-            2px 2px 0 white,
             -3px -3px 0 white,
             3px -3px 0 white,
             -3px 3px 0 white,
@@ -352,18 +318,55 @@
             -4px -4px 0 white,
             4px -4px 0 white,
             -4px 4px 0 white,
-            4px 4px 0 white;
+            4px 4px 0 white,
+            -5px -5px 0 white,
+            5px -5px 0 white,
+            -5px 5px 0 white,
+            5px 5px 0 white;
+        line-height: 1.2;
     }
-    
-    .d-flex {
-        flex-direction: column;
-        align-items: center;
-    }
-    
+
+    /* Contact buttons */
     .contact-btn {
-        width: 80%;
+        background-color: #5B554E;
+        color: white;
+        font-family: 'Wendy One', sans-serif;
+        transition: all 0.3s ease;
     }
-}
+
+    .contact-btn:hover {
+        background-color: #4a4643;
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+        .contact-title {
+            font-size: 1.8rem;
+            text-shadow:
+                -2px -2px 0 white,
+                2px -2px 0 white,
+                -2px 2px 0 white,
+                2px 2px 0 white,
+                -3px -3px 0 white,
+                3px -3px 0 white,
+                -3px 3px 0 white,
+                3px 3px 0 white,
+                -4px -4px 0 white,
+                4px -4px 0 white,
+                -4px 4px 0 white,
+                4px 4px 0 white;
+        }
+
+        .d-flex {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-btn {
+            width: 80%;
+        }
+    }
 </style>
 
 <?= $this->endSection() ?>

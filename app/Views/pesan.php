@@ -32,7 +32,7 @@
                         <p class="card-text">"<?= htmlspecialchars($pesan) ?>"</p>
                         <!-- Tombol Balas -->
                         <div class="text-end">
-                            <form action="/balaspesan" method="get" class="d-inline">
+                            <form action="/balaspesan" method="post" class="d-inline">
                                 <input type="hidden" name="id_anak" value="<?= htmlspecialchars($id_anak) ?>">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-reply me-2"></i>Balas
