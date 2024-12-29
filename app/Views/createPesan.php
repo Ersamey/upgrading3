@@ -60,6 +60,13 @@
                         </button>
                     </div>
                 </form>
+                <div class="text-center mt-3">
+                    <a href="/adm/allpesan"
+                        class="btn titan-font"
+                        style="background-color: #5B554E; color: white;">
+                        Lihat Semua Pesan
+                    </a>
+                </div>
             </div>
         </div>
     </div>

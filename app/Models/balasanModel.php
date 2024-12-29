@@ -8,5 +8,5 @@ class balasanModel extends Model
 {
     protected $table = 'balasan';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id_anak', 'pengirim', 'pesan'];
+    protected $allowedFields = ['id_anak', 'pengirim', 'pesan', 'id_pesan'];
 }

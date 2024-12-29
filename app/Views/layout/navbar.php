@@ -129,9 +129,9 @@
                 </a>
             </div>
             <div class="nav-container">
-                <a href="#home" class="nav-link titan-font">Home</a>
-                <a href="#about" class="nav-link titan-font">About</a>
-                <a href="#contact" class="nav-link titan-font">Contact</a>
+                <a href="<?= base_url('/#home') ?>" class="nav-link titan-font">Home</a>
+                <a href="<?= base_url('/#about') ?>" class="nav-link titan-font">About</a>
+                <a href="<?= base_url('/#contact') ?>" class="nav-link titan-font">Contact</a>
             </div>
             <div class="btn-container">
                 <a href="/pesan" class="btn-start">
@@ -145,9 +145,9 @@
             </button>
         </div>
         <div class="mobile-menu hidden md:hidden mt-4">
-            <a href="#home" class="block py-3 px-4 text-white titan-font hover:bg-white/10">Home</a>
-            <a href="#about" class="block py-3 px-4 text-white titan-font hover:bg-white/10">About</a>
-            <a href="#contact" class="block py-3 px-4 text-white titan-font hover:bg-white/10">Contact</a>
+            <a href="<?= base_url('/#home') ?>" class="block py-3 px-4 text-white titan-font hover:bg-white/10">Home</a>
+            <a href="<?= base_url('/#about') ?>" class="block py-3 px-4 text-white titan-font hover:bg-white/10">About</a>
+            <a href="<?= base_url('/#contact') ?>" class="block py-3 px-4 text-white titan-font hover:bg-white/10">Contact</a>
             <a href="/pesan" class="block py-3 mx-4 my-3 text-white titan-font bg-gray-600 hover:bg-gray-700 rounded-xl text-center">Let's Start</a>
         </div>
     </div>
@@ -157,45 +157,46 @@
     document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelectorAll('.nav-link, .mobile-menu a[href^="#"]');
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-menu a[href^="' + window.location.origin + '/#"]');
 
         mobileMenuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Fast sequential scroll
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
+        // Hanya jalankan smooth scroll jika di homepage
+        if (window.location.pathname === '/') {
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').split('#')[1];
+                    const targetElement = document.getElementById(targetId);
 
-                if (targetElement) {
-                    const startPosition = window.scrollY;
-                    const targetPosition = targetElement.offsetTop;
-                    const distance = targetPosition - startPosition;
-                    const duration = 20;
-                    const startTime = performance.now();
+                    if (targetElement) {
+                        const startPosition = window.scrollY;
+                        const targetPosition = targetElement.offsetTop;
+                        const distance = targetPosition - startPosition;
+                        const duration = 20;
+                        const startTime = performance.now();
 
-                    function scrollStep(currentTime) {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
+                        function scrollStep(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
 
-                        window.scrollTo(0, startPosition + (distance * progress));
+                            window.scrollTo(0, startPosition + (distance * progress));
 
-                        if (progress < 1) {
-                            requestAnimationFrame(scrollStep);
+                            if (progress < 1) {
+                                requestAnimationFrame(scrollStep);
+                            }
                         }
+
+                        requestAnimationFrame(scrollStep);
+                        mobileMenu.classList.add('hidden');
                     }
-
-                    requestAnimationFrame(scrollStep);
-
-                    // Tutup mobile menu
-                    mobileMenu.classList.add('hidden');
-                }
+                });
             });
-        });
+        }
 
+        // Event listener untuk menutup mobile menu
         document.addEventListener('click', function(e) {
             if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
