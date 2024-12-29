@@ -11,7 +11,7 @@
             <!-- Section 1: Logo dan Judul -->
             <div style="flex: 1; min-width: 250px;">
                 <div style="display: flex; align-items: center;">
-                    <img src="assets/images/logo-kemakom.webp" alt="Logo Kemakom" style="width: 40px; margin-right: 1rem;">
+                    <img src="<?= base_url('assets/images/logo-kemakom.webp') ?>" alt="Logo Kemakom" style="width: 40px; margin-right: 1rem;">
                     <h2 style="font-size: 1.5rem; margin: 0;">Upgrading 3</h2>
                 </div>
                 <p style="font-family: 'Poppins', Arial, sans-serif; margin-top: 0.5rem; font-size: 1rem;">Waktunya berlabuh</p>
