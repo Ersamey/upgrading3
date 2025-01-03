@@ -173,7 +173,7 @@
                 <div class="col-md-6 mb-4 mb-md-0">
                     <div class="bg-transparent p-4 rounded-3">
                         <h2 class="mb-4 wendy-one-regular text-start hero-title">
-                            Sebelum Kirim Pesan
+                            Kamu dapet Pesan
                         </h2>
                         <form class="py-3" action="/masuk" method="post">
                             <?= csrf_field(); ?>
