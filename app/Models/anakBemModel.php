@@ -8,5 +8,5 @@ class anakBemModel extends Model
 {
     protected $table = 'anak_bem';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nim', 'nama_anak', 'kode'];
+    protected $allowedFields = ['nim', 'nama_anak'];
 }

@@ -129,8 +129,7 @@ class Home extends BaseController
     public function masuk()
     {
         $nim = $this->request->getPost('nim');
-        $kode = $this->request->getPost('password');
-        $anakbem = $this->anakBem->where('nim', $nim)->where('kode', $kode)->first();
+        $anakbem = $this->anakBem->where('nim', $nim)->first();
 
         if ($anakbem) {
             session()->set('id_anak', $anakbem['id']);
@@ -142,8 +141,7 @@ class Home extends BaseController
     public function adminmasuk()
     {
         $nim = $this->request->getPost('nim');
-        $kode = $this->request->getPost('password');
-        $anakbem = $this->anakBem->where('nim', $nim)->where('kode', $kode)->first();
+        $anakbem = $this->anakBem->where('nim', $nim)->first();
 
         // Cek apakah user ditemukan dan apakah admin
         if ($anakbem && in_array($anakbem['id'], [3, 4])) {
@@ -194,12 +192,10 @@ class Home extends BaseController
     {
         $nama_anak = $this->request->getPost('nama_anak');
         $nim = $this->request->getPost('nim');
-        $kode = $this->request->getPost('kode');
 
         $this->anakBem->save([
             'nama_anak' => $nama_anak,
             'nim' => $nim,
-            'kode' => $kode
         ]);
 
         return redirect()->to('/adm/kirim');

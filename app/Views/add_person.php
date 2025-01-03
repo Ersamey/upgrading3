@@ -37,16 +37,6 @@
                             id="nim"
                             required>
                     </div>
-
-                    <div class="mb-3">
-                        <input type="text"
-                            class="form-control titan-font bg-light py-2"
-                            placeholder="Kode"
-                            name="kode"
-                            id="kode"
-                            required>
-                    </div>
-
                     <div class="d-flex justify-content-between">
                         <button type="reset"
                             class="btn titan-font px-4"

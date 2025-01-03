@@ -186,15 +186,6 @@
                                     name="nim"
                                     required>
                             </div>
-                            <div class="mb-4">
-                                <input type="password"
-                                    class="form-control titan-font bg-white py-3"
-                                    placeholder="Password disini"
-                                    style="height: 45px;"
-                                    id="password"
-                                    name="password"
-                                    required>
-                            </div>
                             <button type="submit"
                                 class="btn w-100 titan-font d-flex align-items-center justify-content-center"
                                 style="background-color: #5B554E; color: white; height: 45px;">
